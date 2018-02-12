@@ -1,0 +1,5 @@
+class AddCategoryRefToJokes < ActiveRecord::Migration[5.1]
+  def change
+    add_reference :jokes, :category, foreign_key: true
+  end
+end
