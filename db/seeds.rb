@@ -35,12 +35,15 @@ fakerSource = Source.create(description: "Wellington's mind using Faker", source
       source: fakerSource,
       category: fakerType)
 
-      users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u) }
+      users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
 end
+
+# Chuck Norris Jokes here
+
+# Nerd Jokes here
 
 puts "Created #{User.count} users."
 puts "Created #{Category.count} categories."
 puts "Created #{Source.count} sources."
 puts "Created #{Joke.count} jokes."
 puts "Created #{Review.count} review."
-puts users.name
