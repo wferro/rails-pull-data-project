@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 Review.destroy_all
 User.destroy_all
 Joke.destroy_all
@@ -28,19 +29,22 @@ chuckSource = Source.create(description: "Chuck Norris DB", source: "http://www.
 nerdSource = Source.create(description: "Oficial Jokes API", source: "https://github.com/15Dkatz/official_joke_api")
 fakerSource = Source.create(description: "Wellington's mind using Faker", source: "https://github.com/stympy/faker")
 
-20.times do
+50.times do
   joke = Joke.create(
       question: "What did #{Faker::Superhero.name} say to #{Faker::HarryPotter.character}?",
       answer: Faker::TheFreshPrinceOfBelAir.quote,
       source: fakerSource,
       category: fakerType)
-
       users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
 end
 
+# Nerd Jokes here
+
+
+
 # Chuck Norris Jokes here
 
-# Nerd Jokes here
+
 
 puts "Created #{User.count} users."
 puts "Created #{Category.count} categories."
