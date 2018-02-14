@@ -35,16 +35,40 @@ fakerSource = Source.create(description: "Wellington's mind using Faker", source
       answer: Faker::TheFreshPrinceOfBelAir.quote,
       source: fakerSource,
       category: fakerType)
+
       users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
 end
 
 # Nerd Jokes here
+uri = URI('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_ten')
+5.times do
+  response = Net::HTTP.get(uri)
+  nerdJokes = JSON.parse(response)
 
+  nerdJokes.each do |njoke|
+    joke = Joke.create(
+        question: njoke['setup'],
+        answer: njoke['punchline'],
+        source: nerdSource,
+        category: nerdType)
 
+        users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
+  end
+end
 
 # Chuck Norris Jokes here
+uri = URI('http://api.icndb.com/jokes/random/50')
+response = Net::HTTP.get(uri)
+chuckNorrisJokes = JSON.parse(response)['value']
 
+chuckNorrisJokes.each do |cnjoke|
+  joke = Joke.create(
+      quote: cnjoke['joke'],
+      source: chuckSource,
+      category: chuckType)
 
+      users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
+end
 
 puts "Created #{User.count} users."
 puts "Created #{Category.count} categories."
