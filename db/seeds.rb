@@ -32,7 +32,7 @@ end
 
 # Nerd Jokes here
 uri = URI('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_ten')
-5.times do
+3.times do
   response = Net::HTTP.get(uri)
   nerdJokes = JSON.parse(response)
 
@@ -48,7 +48,7 @@ uri = URI('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_ten
 end
 
 # Chuck Norris Jokes here
-uri = URI('http://api.icndb.com/jokes/random/50')
+uri = URI('http://api.icndb.com/jokes/random/10')
 response = Net::HTTP.get(uri)
 chuckNorrisJokes = JSON.parse(response)['value']
 
