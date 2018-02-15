@@ -1,12 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
 Review.destroy_all
 User.destroy_all
 Joke.destroy_all
@@ -29,7 +20,7 @@ chuckSource = Source.create(description: "Chuck Norris DB", source: "http://www.
 nerdSource = Source.create(description: "Oficial Jokes API", source: "https://github.com/15Dkatz/official_joke_api")
 fakerSource = Source.create(description: "Wellington's mind using Faker", source: "https://github.com/stympy/faker")
 
-50.times do
+10.times do
   joke = Joke.create(
       question: "What did #{Faker::Superhero.name} say to #{Faker::HarryPotter.character}?",
       answer: Faker::TheFreshPrinceOfBelAir.quote,
