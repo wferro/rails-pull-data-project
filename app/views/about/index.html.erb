@@ -4,3 +4,15 @@
 
 
 <h1>About</h1>
+
+<h2>Sources where I’ll be pulling jokes data from:</h2>
+<ul>
+  <li>The Internet Chuck Norris Database – It is structured in Sentence Quote mode, so it will require a Quote column in the Jokes table</li>
+  <li>Official Joke Api – It is structured in Answer/Question mode, so it will require both columns in the Jokes table</li>
+  <li>Faker – It is structured in Answer/Question mode according to Wellington’s imagination and Faker random choices.</li>
+</ul>
+
+<h3>I plan to integrate these 3 sources in the Jokes table relating it to one of the pre-set types and sources.</h3>
+<h3>A review table will also be created to simulate a fake score (from 0 to 10) and create a many to many relationship between Jokes and come fake Users</h3>
+
+<%= image_tag 'ERD.jpg', style:'height:40vw;width:70vw;margin-bottom:20px;' %>
