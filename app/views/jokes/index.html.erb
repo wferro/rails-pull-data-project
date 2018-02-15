@@ -1,0 +1,21 @@
+<%= link_to 'HOME', "welcome/index" %>
+<%= link_to 'JOKES', jokes_path %>
+<%= link_to 'ABOUT', "about/index" %>
+
+<h1>Listing Jokes</h1>
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Answer</th>
+    <th>Quote</th>
+  </tr>
+
+  <% @jokes.each do |joke| %>
+    <tr>
+      <td><%= joke.question %></td>
+      <td><%= joke.answer %></td>
+      <td><%= joke.quote %></td>
+    </tr>
+  <% end %>
+</table>

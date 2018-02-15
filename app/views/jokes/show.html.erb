@@ -1,0 +1,18 @@
+<%= link_to 'HOME', "welcome/index" %>
+<%= link_to 'JOKES', jokes_path %>
+<%= link_to 'ABOUT', "about/index" %>
+
+<p>
+  <strong>Question:</strong>
+  <%= @joke.question %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @joke.answer %>
+</p>
+
+<p>
+  <strong>Quote:</strong>
+  <%= @joke.quote %>
+</p>
