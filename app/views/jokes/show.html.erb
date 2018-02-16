@@ -2,6 +2,12 @@
 <%= link_to 'JOKES', jokes_path %>
 <%= link_to 'ABOUT', "/about/index" %>
 
+
+<p>
+  <strong>Type:</strong>
+  <%= @joke.category.description %>
+</p>
+
 <p>
   <strong>Question:</strong>
   <%= @joke.question %>
@@ -16,3 +22,25 @@
   <strong>Quote:</strong>
   <%= @joke.quote %>
 </p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @joke.source.description %>
+</p>
+
+<h1>Reviews</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Score</th>
+    <th></th>
+  </tr>
+
+  <% @joke.reviews.each do |rev| %>
+    <tr>
+      <td><%= rev.user.name %></td>
+      <td><%= rev.score %></td>
+    </tr>
+  <% end %>
+</table>

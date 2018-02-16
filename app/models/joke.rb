@@ -7,5 +7,4 @@ class Joke < ApplicationRecord
   validates :quote, length: { maximum: 200 }
   validates :question, length: { maximum: 200 }
   validates :answer, length: { maximum: 200 }
-  validates :question, uniqueness: true
 end

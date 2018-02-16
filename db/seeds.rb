@@ -34,6 +34,21 @@ puts "Created #{Source.count} sources."
 end
 puts "Created #{Joke.count} jokes."
 
+# Chuck Norris Jokes here
+uri = URI('http://api.icndb.com/jokes/random/10')
+response = Net::HTTP.get(uri)
+chuckNorrisJokes = JSON.parse(response)['value']
+
+chuckNorrisJokes.each do |cnjoke|
+  joke = Joke.create(
+      quote: cnjoke['joke'],
+      source: chuckSource,
+      category: chuckType)
+
+      users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
+end
+puts "Created #{Joke.count} jokes."
+
 # Nerd Jokes here
 uri = URI('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_ten')
 
@@ -51,18 +66,4 @@ nerdJokes.each do |njoke|
 end
 puts "Created #{Joke.count} jokes."
 
-# Chuck Norris Jokes here
-uri = URI('http://api.icndb.com/jokes/random/10')
-response = Net::HTTP.get(uri)
-chuckNorrisJokes = JSON.parse(response)['value']
-
-chuckNorrisJokes.each do |cnjoke|
-  joke = Joke.create(
-      quote: cnjoke['joke'],
-      source: chuckSource,
-      category: chuckType)
-
-      users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
-end
-puts "Created #{Joke.count} jokes."
 puts "Created #{Review.count} review."
