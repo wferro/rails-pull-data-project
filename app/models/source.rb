@@ -1,3 +1,4 @@
+#Source table
 class Source < ApplicationRecord
   has_many :jokes
   validates :description, :source, presence: true
