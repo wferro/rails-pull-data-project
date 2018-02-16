@@ -1,3 +1,4 @@
+#Joke table
 class Joke < ApplicationRecord
   belongs_to :source
   belongs_to :category
