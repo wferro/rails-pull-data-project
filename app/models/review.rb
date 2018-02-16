@@ -1,3 +1,4 @@
+#Review Table
 class Review < ApplicationRecord
   belongs_to :joke
   belongs_to :user
