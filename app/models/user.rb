@@ -1,3 +1,4 @@
+#User table
 class User < ApplicationRecord
   has_many :reviews
   has_many :jokes, through: :reviews
