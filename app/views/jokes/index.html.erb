@@ -9,6 +9,7 @@
     <th>Question</th>
     <th>Answer</th>
     <th>Quote</th>
+    <th></th>
   </tr>
 
   <% @jokes.each do |joke| %>
@@ -16,6 +17,7 @@
       <td><%= joke.question %></td>
       <td><%= joke.answer %></td>
       <td><%= joke.quote %></td>
+      <td><%= link_to 'Show', joke_path(joke) %></td>
     </tr>
   <% end %>
 </table>

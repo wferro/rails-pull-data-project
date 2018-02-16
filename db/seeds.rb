@@ -11,14 +11,17 @@ Source.destroy_all
 end
 
 users = User.all
+puts "Created #{User.count} users."
 
 chuckType = Category.create(description: "Chuck Norris Facts")
 nerdType = Category.create(description: "Nerd Jokes")
 fakerType = Category.create(description: "Random Faker")
+puts "Created #{Category.count} categories."
 
 chuckSource = Source.create(description: "Chuck Norris DB", source: "http://www.icndb.com/api")
 nerdSource = Source.create(description: "Oficial Jokes API", source: "https://github.com/15Dkatz/official_joke_api")
 fakerSource = Source.create(description: "Wellington's mind using Faker", source: "https://github.com/stympy/faker")
+puts "Created #{Source.count} sources."
 
 10.times do
   joke = Joke.create(
@@ -29,23 +32,24 @@ fakerSource = Source.create(description: "Wellington's mind using Faker", source
 
       users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
 end
+puts "Created #{Joke.count} jokes."
 
 # Nerd Jokes here
 uri = URI('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_ten')
-3.times do
-  response = Net::HTTP.get(uri)
-  nerdJokes = JSON.parse(response)
 
-  nerdJokes.each do |njoke|
-    joke = Joke.create(
-        question: njoke['setup'],
-        answer: njoke['punchline'],
-        source: nerdSource,
-        category: nerdType)
+response = Net::HTTP.get(uri)
+nerdJokes = JSON.parse(response)
 
-        users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
-  end
+nerdJokes.each do |njoke|
+  joke = Joke.create(
+      question: njoke['setup'],
+      answer: njoke['punchline'],
+      source: nerdSource,
+      category: nerdType)
+
+      users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
 end
+puts "Created #{Joke.count} jokes."
 
 # Chuck Norris Jokes here
 uri = URI('http://api.icndb.com/jokes/random/10')
@@ -60,9 +64,5 @@ chuckNorrisJokes.each do |cnjoke|
 
       users.each { |u| Review.create(score: Faker::Number.between(1, 10), joke: joke, user: u)}
 end
-
-puts "Created #{User.count} users."
-puts "Created #{Category.count} categories."
-puts "Created #{Source.count} sources."
 puts "Created #{Joke.count} jokes."
 puts "Created #{Review.count} review."
